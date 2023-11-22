@@ -41,6 +41,10 @@
 	<logger name="org.springframework.web">
 		<level value="debug" />
 	</logger>
+	<logger name="jdbc.resultset">
+		<level value="warn" />
+	</logger>
+	
 
 	<!-- Root Logger -->
 	<root>

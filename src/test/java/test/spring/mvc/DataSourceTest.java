@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 
 import javax.sql.DataSource;
 
+import org.apache.ibatis.session.SqlSessionFactory;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,14 +19,18 @@ public class DataSourceTest {
    @Autowired
    private DataSource dataSource;
    
+   @Autowired
+   private SqlSessionFactory sqlSession;
+   
    @Test
    public void test() {
       try {
-         Connection conn = dataSource.getConnection();
-         PreparedStatement pstmt=conn.prepareStatement("select * from emp where sal >= ?");
-         pstmt.setInt(1, 2000);
-         ResultSet rs = pstmt.executeQuery();
-         System.out.println(conn);
+//         Connection conn = dataSource.getConnection();
+//         PreparedStatement pstmt=conn.prepareStatement("select * from emp where sal >= ?");
+//         pstmt.setInt(1, 2000);
+//         ResultSet rs = pstmt.executeQuery();
+//         System.out.println(conn);
+    	  System.out.println("mybatis==>"+sqlSession);
       } catch (Exception e) {
          e.printStackTrace();
       }
