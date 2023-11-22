@@ -8,22 +8,14 @@ import org.springframework.stereotype.Service;
 import test.spring.mvc.bean.EmpDTO;
 import test.spring.mvc.repository.EmpMapper;
 
-@Service
+@Service("emp")
 public class EmpServiceImpl {
 
 	@Autowired
 	private EmpMapper mapper;
+
 	
 	
-	public List<EmpDTO> read(){
-		return mapper.all(); 
-	}
 	
-	public List<Integer> readno(){
-		return mapper.allEmpno();
-	}
-	public int create(EmpDTO dto) {
-		return mapper.insertEmp(dto);
-	}
 	
 }
