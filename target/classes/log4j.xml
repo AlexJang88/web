@@ -11,45 +11,47 @@
 	</appender>
 	
 	<!-- Application Loggers -->
-	<logger name="test.spring.mvc">
-		<level value="info" />
-	</logger>
-	<logger name="jdbc.audit">
-		<level value="warn" />
-	</logger>
-	<logger name="jdbc.connection">
-		<level value="warn" />
-	</logger>
-	
-	<logger name="ex.framework.mvc">
-		<level value="info" />
-	</logger>
-	
-	<!-- 3rdparty Loggers -->
-	<logger name="org.springframework.core">
-		<level value="info" />
-	</logger>
-	
-	<logger name="org.springframework.beans">
-		<level value="info" />
-	</logger>
-	
-	<logger name="org.springframework.context">
-		<level value="debug" />
-	</logger>
+   <logger name="test.spring.mvc">
+      <level value="info" />
+   </logger>
+   
+   <logger name="ex.framework.mvc">
+      <level value="info" />
+   </logger>
+   
+   <!-- 3rdparty Loggers -->
+   <logger name="org.springframework.core">
+      <level value="info" />
+   </logger>
+   
+   <logger name="org.springframework.beans">
+      <level value="info" />
+   </logger>
+   
+   <logger name="org.springframework.context">
+      <level value="info" />
+   </logger>
 
-	<logger name="org.springframework.web">
-		<level value="info" />
-	</logger>
-	<logger name="jdbc.resultset">
-		<level value="warn" />
-	</logger>
-	
+   <logger name="org.springframework.web">
+      <level value="info" />
+   </logger>
+   
+   <logger name="jdbc.audit">
+      <level value="warn" />
+   </logger>
+   
+   <logger name="jdbc.connection">
+      <level value="warn" />
+   </logger>
+   
+   <logger name="jdbc.resultset">
+      <level value="warn" />
+   </logger>
 
-	<!-- Root Logger -->
-	<root>
-		<priority value="warn" />
-		<appender-ref ref="console" />
-	</root>
-	
+   <!-- Root Logger -->
+   <root>
+      <priority value="warn" />
+      <appender-ref ref="console" />
+   </root>
+   
 </log4j:configuration>
