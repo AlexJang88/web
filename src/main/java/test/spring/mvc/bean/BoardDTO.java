@@ -18,4 +18,5 @@ public class BoardDTO {
 	private int ref;
 	private int re_step;
 	private int re_level;
+	private int isFile;
 }

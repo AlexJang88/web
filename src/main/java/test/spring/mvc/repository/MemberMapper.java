@@ -14,5 +14,6 @@ public interface MemberMapper {
 	public int getStatus(String id);
 	public List<MemberDTO> memberList();
 	public int adminStatsChange(MemberDTO dto);
+	public int profileChange(MemberDTO dto);
 }
 

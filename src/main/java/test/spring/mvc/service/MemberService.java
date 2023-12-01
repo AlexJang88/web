@@ -2,6 +2,11 @@ package test.spring.mvc.service;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.ui.Model;
+import org.springframework.web.multipart.MultipartFile;
+
 import test.spring.mvc.bean.MemberDTO;
 
 public interface MemberService {
@@ -13,6 +18,6 @@ public interface MemberService {
 	public int getStatus(String id);
 	public List<MemberDTO> memberList();
 	public int adminStatsChange(MemberDTO dto);
-	
+	public int profileChange(HttpServletRequest request,MultipartFile profile,MemberDTO dto);
 	
 }

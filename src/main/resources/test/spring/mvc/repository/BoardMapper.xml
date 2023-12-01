@@ -9,7 +9,7 @@
 	    	select count(*) from freeboard
 	    </select>
 	    
-	    <select id="list" resultType="test.spring.mvc.bean.BoardDTO" parameterType="hashmap">
+	    <select id="list" resultType="BoardDTO" parameterType="hashmap">
 	    	<![CDATA[
 	    	select * from (select b.*, rownum r from (select * from freeboard order by ref desc, re_step asc) b) where r>=#{start} and r<=#{end}
 	    	]]>
@@ -19,15 +19,15 @@
 	    	select NVL(max(num),0) from freeboard
 	    </select>
 	    
-	    <update id="writeUpdate" parameterType="test.spring.mvc.bean.BoardDTO">
+	    <update id="writeUpdate" parameterType="BoardDTO">
 	    	<![CDATA[
 	    	update freeboard set re_step=re_step+1 where ref=#{ref} and re_step > #{re_step}
 	    	]]>
 	    </update>
 	    
-	    <insert id="writeInsert" parameterType="test.spring.mvc.bean.BoardDTO">
+	    <insert id="writeInsert" parameterType="BoardDTO">
 	    	insert into freeboard(num,writer,email,subject,passwd,reg_date,
-	    	ref,re_step,re_level,content,ip)	values(
+	    	ref,re_step,re_level,content,ip,isFile)	values(
 	    	freeboard_seq.NEXTVAL,
 	    	#{writer},
 	    	#{email},
@@ -38,8 +38,49 @@
 	    	#{re_step},
 	    	#{re_level},
 	    	#{content},
-	    	#{ip})
+	    	#{ip},
+	    	#{isFile})
 	    </insert>
 	    
-    
+	    <select id="getArticle" parameterType="int" resultSets="BoardDTO">
+	    	select * from freeboard where num=#{num}
+	    </select>
+	    <update id="updateArticle" parameterType="BoardDTO">
+	     update freeboard
+	     	<set>
+	     	 <if test="writer != null and writer != '' ">writer=#{writer} ,</if>
+	     	 <if test="subject != null and subject != '' ">subject=#{subject} ,</if> 
+	     	 <if test="email != null and email != '' ">email=#{email} ,</if> 
+	     	 <if test="content != null and content != '' ">content=#{content} </if>  
+	     	</set>
+	     	where num=#{num} and passwd=#{passwd}
+	    </update>
+	    
+	    <insert id="fileInsert">
+	    	insert into freeboard_file values(
+	    		freeboard_file_seq.nextval,
+	    		#{freeboardnum},
+	    		#{fileName}
+	    	)
+	    </insert>
+	    
+	    <select id="getFileName" parameterType="int" resultType="String">
+	    	select filename from freeboard_file where freeboardnum=#{freeboardnum}
+	    </select>
+	        
+	    <delete id="deleteNum"  >
+            delete from freeboard where num=${num}
+        </delete>
+        
+         <select id="readPasswd" resultType="String" parameterType="int">
+         select passwd from freeboard where num=${num}
+      	</select>
+      	<select id="readNum" resultType="BoardDTO">
+        	 select * from freeboard where num=#{num}
+      	</select>
+      	<delete id="fileDelete" parameterType="int">
+      		delete from freeboard_file where freeboardnum=#{freeboardnum}
+      	</delete>
+      
+	    
     </mapper>

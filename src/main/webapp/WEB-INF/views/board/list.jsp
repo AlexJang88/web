@@ -46,9 +46,12 @@
 							</c:if> <c:if test="${article.re_level == 0 }">
 								<img src="/resources/img/level.gif" width="0" height="16">
 							</c:if> 
-								<a href="content?num=${article.num}&pageNum=${pageNum}">${article.subject}</a> 
+								<a href="/free/content?num=${article.num}&pageNum=${pageNum}">${article.subject}</a> 
 							<c:if test="${article.readcount >=20 }">
 								<img src="/resources/img/hot.gif" border="0" height="16">
+							</c:if>
+							<c:if test="${article.isFile>0}">
+								<img src="/resources/img/fileimg.png" border="0" height="16">
 							</c:if>
 						</td>
 						<td align="center" width="100">

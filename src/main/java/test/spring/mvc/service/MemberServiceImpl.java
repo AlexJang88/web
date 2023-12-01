@@ -1,9 +1,15 @@
 package test.spring.mvc.service;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
+import org.springframework.web.multipart.MultipartFile;
 
 import test.spring.mvc.bean.MemberDTO;
 import test.spring.mvc.repository.MemberMapper;
@@ -57,6 +63,32 @@ public class MemberServiceImpl implements MemberService{
 	public int adminStatsChange(MemberDTO dto) {
 		
 		return mapper.adminStatsChange(dto);
+	}
+
+	@Override
+	public int profileChange(HttpServletRequest request,MultipartFile profile,MemberDTO dto) {
+		String filePath = request.getServletContext().getRealPath("/resources/file/user/");
+		String contentType = profile.getContentType();
+		if(contentType.split("/")[0].equals("image")) {
+			String orgName = profile.getOriginalFilename();
+			String ext = orgName.substring(orgName.lastIndexOf("."));   
+			File copy = new File(filePath+dto.getId()+ext);
+			String img = dto.getId()+ext;
+			try {
+				profile.transferTo(copy);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			if(img!=null && img.length()>0) {
+				
+				dto.setImg(img);
+			}else {
+				dto.setImg("default.jpg");
+			}
+			
+			
+		}
+		return mapper.profileChange(dto);
 	}
 
 	

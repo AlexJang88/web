@@ -21,5 +21,6 @@ function writeSave(){
 	  document.writeform.passwd.focus();
 	  return false;
 	}
- }    
+ }
+     
 
