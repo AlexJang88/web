@@ -6,6 +6,6 @@
   <configuration>
   
   	<typeAliases>
-  		<typeAlias type="test.spring.mvc.bean.NoticeDTO" alias="NoticeDTO"/>
+  		<typeAlias type="test.spring.mvc.bean.BoardDTO" alias="BoardDTO"/>
   	</typeAliases>
   </configuration>

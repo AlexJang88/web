@@ -60,7 +60,7 @@ public class SampleController {
 	@RequestMapping("test2.do")
 	public String test2(RedirectAttributes rttr) {
 		rttr.addFlashAttribute("msg", "helloworld");
-		return "redirect:/1120/test3.do";
+		return "redirect:/1120/test3.do?msg2=helloworld2";
 	}
 	
 	@RequestMapping("test3.do")
