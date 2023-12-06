@@ -15,15 +15,26 @@ import test.spring.mvc.bean.FreeboardFileDTO;
 import test.spring.mvc.bean.MemberDTO;
 
 public interface BoardService {
-	public int count();
-	public void list(int pageNum,Model model);
-	public void create(BoardDTO dto); 
-	public BoardDTO getArticle(int num);
-	public int updateArticle(BoardDTO dto);
-	public int fileUpload(ArrayList<MultipartFile> files,String filePath);
-	public List<String> getFileName(int freeboardnum);
-	 public int deleteNum(HttpServletRequest request,int num , String passwd);
-	 public String readPasswd(int num);
-	 public void fileDelete(int freeboardnum);
+
+	   public int fileUpload(ArrayList<MultipartFile> files, String path);
+	   public void create(BoardDTO dto);
+	   
+	   
+	   public void list(int pageNum, Model model);
+	   public int count();
+	   public BoardDTO readContent(int num);
+	   
+	   
+	   //String path 추가
+	   public List<String> fileget(int num); // 사진 찾는곳
+	   
+	   public int deleteNum(int num, String passwd,String path); //글삭제하기   
+	   public BoardDTO update(int num);  // 글수정하기
+	   
+	   
+	   public String readPasswd(int num);
+	   public int updateNum(BoardDTO dto);
+	   public List<FreeboardFileDTO> fileList(int freeboardnum);
+
 	
 }
